@@ -8,9 +8,12 @@
     "dev": "node --watch server.js",
     "agent:dev": "node --watch features/langchain-agent/server/index.js",
     "agent:start": "node features/langchain-agent/server/index.js",
-    "db:init": "node scripts/init-db.js",
-    "test:pipeline": "node scripts/test-pipeline.js",
-    "test:raw": "node scripts/test-raw.js"
+    "db:init": "node init-db.js",
+    "test:pipeline": "node scripts/dev/test-pipeline.js",
+    "cli": "node cli/index.ts",
+    "cli:crawl": "node cli/index.ts ingest crawl",
+    "cli:run": "node cli/index.ts pipeline run --all",
+    "cli:typecheck": "tsc -p cli/tsconfig.json --noEmit"
   },
   "dependencies": {
     "@langchain/cohere": "^1.1.0",
@@ -25,5 +28,9 @@
     "langchain": "^1.5.2",
     "openai": "^6.45.0",
     "zod": "^4.4.3"
+  },
+  "devDependencies": {
+    "@types/node": "^22.20.0",
+    "typescript": "^5.9.3"
   }
 }

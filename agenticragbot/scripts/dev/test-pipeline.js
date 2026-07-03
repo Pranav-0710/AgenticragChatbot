@@ -3,7 +3,9 @@
  * Quick smoke test — runs the clean+chunk pipeline on a sample markdown string.
  * No DB needed. Run with: node scripts/test-pipeline.js
  */
-import { cleanAndChunkMarkdown } from '../kb-pipeline/index.js';
+// FIX: was '../kb-pipeline/index.js' (nonexistent path). The canonical
+// clean+chunk entry point is src/pipeline/index.js.
+import { cleanAndChunkMarkdown } from '../../src/pipeline/index.js';
 
 const SAMPLE = `---
 title: "Mergex Services"

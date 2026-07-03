@@ -1,6 +1,7 @@
 /**
- * scripts/init-db.js
- * Run ONCE to create tables in your Neon database.
+ * init-db.js
+ * Run ONCE to create tables in your Neon database. This is the canonical
+ * schema — matches src/services/db.js (markdown_content, not r2_key).
  *
  * WHY THIS SCHEMA:
  *   kb_jobs        — tracks every crawl/ingest run: how many pages found,
@@ -25,7 +26,7 @@
  *
  * Usage:
  *   export DATABASE_URL="postgresql://user:pass@ep-xxx-pooler.region.aws.neon.tech/neondb?sslmode=require"
- *   node scripts/init-db.js
+ *   node init-db.js          (or: npm run db:init)
  */
 
 import { neon } from '@neondatabase/serverless';
