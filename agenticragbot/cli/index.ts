@@ -29,9 +29,14 @@ USAGE
   node cli/index.ts <group> <subcommand> [options]
 
 INGEST
-  ingest crawl --url <site> [--max-pages 50] [--skip-existing]
+  ingest crawl --url <site> [--max-pages 50] [--skip-existing] [--no-push]
       Crawl a site (sitemap-first) and scrape each page via Jina to
       cli/workspace/raw/<docId>.md, recording each in manifest.json.
+      If KB_STORAGE_URL/KB_STORAGE_TOKEN are set, each page is ALSO pushed
+      to Cloudflare R2 via the kb-storage Worker (dual-write; --no-push skips).
+  ingest sync [--force]
+      Pull every markdown doc from R2 down into cli/workspace/raw/ (skips
+      docs already local unless --force). Requires KB_STORAGE_URL/TOKEN.
 
 PIPELINE  (all file-based, writes to cli/workspace/processed/)
   pipeline clean  [--doc <id> | --all]   Clean → <id>.clean.md + <id>.topics.json

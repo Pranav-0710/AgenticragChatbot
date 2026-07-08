@@ -1,0 +1,21 @@
+{
+  // kb-storage — thin storage Worker: save/fetch/list/delete markdown in R2.
+  // Deliberately separate from the stale root wrangler.toml (which points at a
+  // deleted src/index.js). Deploy from repo root with:
+  //   npm run worker:deploy
+  // One-time secret (shared token the CLI must present):
+  //   npx wrangler secret put KB_STORAGE_TOKEN --config workers/kb-storage/wrangler.jsonc
+  "$schema": "../../node_modules/wrangler/config-schema.json",
+  "name": "kb-storage",
+  "main": "src/index.ts",
+  "compatibility_date": "2026-07-01",
+  "r2_buckets": [
+    {
+      "binding": "KB_BUCKET",
+      "bucket_name": "kb-storage"
+    }
+  ],
+  "observability": {
+    "enabled": true
+  }
+}

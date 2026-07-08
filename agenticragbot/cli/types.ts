@@ -170,6 +170,8 @@ export interface ManifestEntry {
   charCount: number;
   wordCount: number;
   pipeline: PipelineFlags;
+  /** R2 object key (kb/<domain>/<slug>/<docId>.md) once pushed/synced; absent for local-only docs. */
+  r2Key?: string;
 }
 
 export interface Manifest {

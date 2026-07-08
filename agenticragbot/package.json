@@ -12,8 +12,12 @@
     "test:pipeline": "node scripts/dev/test-pipeline.js",
     "cli": "node cli/index.ts",
     "cli:crawl": "node cli/index.ts ingest crawl",
+    "cli:sync": "node cli/index.ts ingest sync",
     "cli:run": "node cli/index.ts pipeline run --all",
-    "cli:typecheck": "tsc -p cli/tsconfig.json --noEmit"
+    "cli:typecheck": "tsc -p cli/tsconfig.json --noEmit",
+    "worker:dev": "wrangler dev --config workers/kb-storage/wrangler.jsonc",
+    "worker:deploy": "wrangler deploy --config workers/kb-storage/wrangler.jsonc",
+    "worker:typecheck": "tsc -p workers/kb-storage/tsconfig.json --noEmit"
   },
   "dependencies": {
     "@langchain/cohere": "^1.1.0",
@@ -30,6 +34,7 @@
     "zod": "^4.4.3"
   },
   "devDependencies": {
+    "@cloudflare/workers-types": "^5.20260708.1",
     "@types/node": "^22.20.0",
     "typescript": "^5.9.3"
   }
